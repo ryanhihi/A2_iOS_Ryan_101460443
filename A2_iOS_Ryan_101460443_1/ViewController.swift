@@ -17,11 +17,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var productIdLabel: UILabel!
+    
+    //Create the global context
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    //List of products
+    var products: [Product]?
+    
+    //Add filter product for display when search
+    var filteredProducts: [Product]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
+    //function to load data
+    
 
 }
 
