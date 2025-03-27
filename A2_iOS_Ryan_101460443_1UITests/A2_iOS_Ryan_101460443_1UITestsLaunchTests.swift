@@ -1,9 +1,4 @@
-//
-//  A2_iOS_Ryan_101460443_1UITestsLaunchTests.swift
-//  A2_iOS_Ryan_101460443_1UITests
-//
-//  Created by Christian Aiden on 2025-03-27.
-//
+
 
 import XCTest
 

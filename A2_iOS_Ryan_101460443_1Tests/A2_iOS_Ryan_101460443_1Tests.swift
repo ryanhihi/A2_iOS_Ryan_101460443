@@ -1,9 +1,4 @@
-//
-//  A2_iOS_Ryan_101460443_1Tests.swift
-//  A2_iOS_Ryan_101460443_1Tests
-//
-//  Created by Christian Aiden on 2025-03-27.
-//
+
 
 import Testing
 @testable import A2_iOS_Ryan_101460443_1
