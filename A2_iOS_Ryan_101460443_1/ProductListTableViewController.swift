@@ -24,6 +24,8 @@ class ProductListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        tableView.rowHeight = 100
+        fetchProducts()
     }
     
     //Fetch products
@@ -52,21 +54,37 @@ class ProductListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductCell", for: indexPath)
-
-        // Configure the cell...
+        
+        // Configure the cell
         if let product = products?[indexPath.row] {
+            // Set the main text (product name)
             cell.textLabel?.text = product.name
+            
+            let provider = product.provider ?? "Provider N/A"
+            let description = product.desc ?? "No description available"
+            
+            // Set the detail text with formatted price, provider, and description
             cell.detailTextLabel?.text = """
-                    ID: \(product.productID?.uuidString ?? "N/A")
-                    Description: \(product.desc ?? "No details to show")
-                    Price: $\(String(format: "%.2f", product.price))
-                    Provider: \(product.provider ?? "N/A")
-                    """
-                }
-                
-                return cell
+            Price: \(String(format: "$%.2f", product.price)) • 
+            Provider: \(provider) • 
+            Description: \(description)
+            """
+        } else {
+            // Fallback values for unknown products
+            cell.textLabel?.text = "Unknown Product"
+            cell.detailTextLabel?.text = "No details available"
+        }
+        
+        // UI customization
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 16, weight: .bold)
+        cell.detailTextLabel?.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        cell.detailTextLabel?.textColor = .gray
+        cell.detailTextLabel?.numberOfLines = 0  // Enable multiline detail text
+        
+        return cell
     }
-    
+
+
 
     /*
     // Override to support conditional editing of the table view.

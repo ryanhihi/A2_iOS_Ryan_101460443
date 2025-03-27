@@ -21,8 +21,17 @@ class AddProductViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(saveData), name: UIApplication.willResignActiveNotification, object: nil)
     }
     
+    @objc func saveData() {
+        do {
+            try context.save()
+        } catch {
+            print("error while saving data: \(error.localizedDescription)")
+        }
+    }
 
     /*
     // MARK: - Navigation
@@ -70,6 +79,10 @@ class AddProductViewController: UIViewController {
         textFields[3].text = ""
         }
     
-    
+    private func showAlert(_ title: String, _ message: String, completion: (() -> Void)? = nil) {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in completion?() })
+            present(alert, animated: true, completion: nil)
+        }
     
 }

@@ -37,6 +37,7 @@ class ViewController: UIViewController, UISearchBarDelegate{
         //load product data
         loadProducts()
         displayFirstProduct()
+        
     }
 
     //function to load data
@@ -52,10 +53,12 @@ class ViewController: UIViewController, UISearchBarDelegate{
         }
     }
     
+
+    
     //Load the first product in the inventory on screen
-    func displayFirstProduct(){
-        guard let firstProduct = filteredProducts?.first else {
-            // In case no products available
+    func displayFirstProduct() {
+        guard let product = filteredProducts?.first else {
+            // No products available
             productIdLabel.text = "No Products Available"
             productNameLabel.text = ""
             descriptionLabel.text = ""
@@ -63,39 +66,72 @@ class ViewController: UIViewController, UISearchBarDelegate{
             providerLabel.text = ""
             return
         }
-        
-        // Update labels with product details
-        productIdLabel.text = "ID: \(firstProduct.productID?.uuidString ?? "N/A")"
-        productNameLabel.text = "Name: \(firstProduct.name ?? "N/A")"
-        descriptionLabel.text = "Description: \(firstProduct.desc ?? "N/A")"
-        priceLabel.text = "Price: $\(firstProduct.price)"
-        providerLabel.text = "Provider: \(firstProduct.provider ?? "N/A")"
+
+        // Update the labels with the first product's details
+        productIdLabel.text = product.productID?.uuidString ?? "N/A"
+        productNameLabel.text = product.name ?? "N/A"
+        descriptionLabel.text = product.desc ?? "N/A"
+        priceLabel.text = String(format: "$%.2f", product.price)
+        providerLabel.text = product.provider ?? "N/A"
     }
     
+    
+
     // UISearchBarDelegate method for search functionality
-        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             if searchText.isEmpty {
                 filteredProducts = products
+                displayFirstProduct()
             } else {
                 filteredProducts = products?.filter { product in
-                    let nameMatch = product.name?.lowercased().contains(searchText.lowercased()) ?? false
-                    let descriptionMatch = product.desc?.lowercased().contains(searchText.lowercased()) ?? false
-                    return nameMatch || descriptionMatch
+                            let nameMatch = product.name?.lowercased().contains(searchText.lowercased()) ?? false
+                            let descriptionMatch = product.desc?.lowercased().contains(searchText.lowercased()) ?? false
+                            return nameMatch || descriptionMatch
+                        }
                 }
-            }
+            
             
             // Display the first filtered product
+            displayAllFilteredProducts()
             displayFirstProduct()
         }
     
-    //Prepare for the next screen
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowProductListSegue" {
-            if let productListVC = segue.destination as? ProductListTableViewController {
-                productListVC.products = self.products
-            }
+    //Display all filtered products
+    func displayAllFilteredProducts() {
+        guard let filteredProducts = filteredProducts, !filteredProducts.isEmpty else {
+            // No matching products found
+            productIdLabel.text = "No Matching Products"
+            productNameLabel.text = ""
+            descriptionLabel.text = ""
+            priceLabel.text = ""
+            providerLabel.text = ""
+            return
+        }
+
+        if filteredProducts.count == 1 {
+            // Display details of a single product
+            displayFirstProduct()
+        } else {
+            // Display details of all filtered products
+            let productDetails = filteredProducts.map { product in
+                """
+                ID: \(product.productID?.uuidString ?? "N/A")
+                Name: \(product.name ?? "N/A")
+                Description: \(product.desc ?? "N/A")
+                Price: \(String(format: "$%.2f", product.price))
+                Provider: \(product.provider ?? "N/A")
+                """
+            }.joined(separator: "\n\n")
+
+            // Assign the concatenated details to the label
+            productIdLabel.text = productDetails
+            productNameLabel.text = ""
+            descriptionLabel.text = ""
+            priceLabel.text = ""
+            providerLabel.text = ""
         }
     }
+
 
 
 }
