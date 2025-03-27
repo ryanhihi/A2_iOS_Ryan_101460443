@@ -220,6 +220,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save Product"/>
+                                <connections>
+                                    <action selector="saveNewProduct:" destination="s48-oT-SEy" eventType="touchUpInside" id="LQK-5X-kGL"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add New Product" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHB-oe-AuR">
                                 <rect key="frame" x="133" y="137" width="134" height="21"/>
@@ -233,6 +236,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="gZM-9P-roW"/>
+                    <connections>
+                        <outlet property="saveProduct" destination="23G-yq-Jn3" id="2ot-bg-s7m"/>
+                        <outletCollection property="textFields" destination="3mr-k6-Qk7" collectionClass="NSMutableArray" id="zAs-Ji-Xt9"/>
+                        <outletCollection property="textFields" destination="HSS-Dr-Afg" collectionClass="NSMutableArray" id="EH0-Eg-njf"/>
+                        <outletCollection property="textFields" destination="Ho7-fF-9hX" collectionClass="NSMutableArray" id="dKq-3K-pdu"/>
+                        <outletCollection property="textFields" destination="fhJ-W1-kpD" collectionClass="NSMutableArray" id="q5A-zu-1Yg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hDX-XV-WDk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

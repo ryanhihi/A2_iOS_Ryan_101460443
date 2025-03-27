@@ -9,7 +9,14 @@ import UIKit
 import CoreData
 
 class AddProductViewController: UIViewController {
-
+    
+    // add global context
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    @IBOutlet var textFields: [UITextField]!
+    
+    @IBOutlet weak var saveProduct: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,5 +33,9 @@ class AddProductViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    
+    @IBAction func saveNewProduct(_ sender: Any) {
+    }
+    
 }
