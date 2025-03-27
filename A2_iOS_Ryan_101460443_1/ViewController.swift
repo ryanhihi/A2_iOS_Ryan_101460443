@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         
         //load product data
         loadProducts()
+        displayFirstProduct()
     }
 
     //function to load data
@@ -47,6 +48,28 @@ class ViewController: UIViewController {
             print("error fetching data: \(error.localizedDescription)" )
         }
     }
+    
+    //Load the first product in the inventory on screen
+    func displayFirstProduct(){
+        guard let firstProduct = filteredProducts?.first else {
+            // In case no products available
+            productIdLabel.text = "No Products Available"
+            productNameLabel.text = ""
+            descriptionLabel.text = ""
+            priceLabel.text = ""
+            providerLabel.text = ""
+            return
+        }
+        
+        // Update labels with product details
+        productIdLabel.text = "ID: \(firstProduct.productID?.uuidString ?? "N/A")"
+        productNameLabel.text = "Name: \(firstProduct.name ?? "N/A")"
+        descriptionLabel.text = "Description: \(firstProduct.desc ?? "N/A")"
+        priceLabel.text = "Price: $\(firstProduct.price)"
+        providerLabel.text = "Provider: \(firstProduct.provider ?? "N/A")"
+    }
+    
+    
 
 }
 
