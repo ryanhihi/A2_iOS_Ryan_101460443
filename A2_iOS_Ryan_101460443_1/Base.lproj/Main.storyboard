@@ -155,10 +155,10 @@
             </objects>
             <point key="canvasLocation" x="1793" y="11"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Product View Controller-->
         <scene sceneID="KDe-Vt-zix">
             <objects>
-                <viewController id="s48-oT-SEy" sceneMemberID="viewController">
+                <viewController id="s48-oT-SEy" customClass="AddProductViewController" customModule="A2_iOS_Ryan_101460443_1" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e2g-dK-1tq">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
