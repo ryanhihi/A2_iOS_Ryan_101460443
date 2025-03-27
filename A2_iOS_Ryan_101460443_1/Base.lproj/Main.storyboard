@@ -99,7 +99,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.7607843876" green="0.84705877299999999" blue="0.99215686319999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
                     <navigationItem key="navigationItem" id="b49-p4-7u5"/>
                     <connections>
@@ -115,7 +115,7 @@
             </objects>
             <point key="canvasLocation" x="1043.5114503816794" y="3.5211267605633805"/>
         </scene>
-        <!--Product List Table View Controller-->
+        <!--Products List-->
         <scene sceneID="EHo-Jz-cry">
             <objects>
                 <tableViewController id="PGS-yo-ZLR" customClass="ProductListTableViewController" customModule="A2_iOS_Ryan_101460443_1" customModuleProvider="target" sceneMemberID="viewController">
@@ -123,6 +123,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="separatorColor" red="0.76642626059999996" green="0.85637368960000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="sectionIndexBackgroundColor" red="0.7607843876" green="0.84705877299999999" blue="0.99215686319999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <label key="tableFooterView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    swipe left to Edit or Remove" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZbO-LM-n2Y">
                             <rect key="frame" x="0.0" y="121.66666793823242" width="393" height="93"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -161,7 +163,7 @@
                             <outlet property="delegate" destination="PGS-yo-ZLR" id="tog-VA-pRQ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="czQ-Ei-ciL">
+                    <navigationItem key="navigationItem" title="Products List" id="czQ-Ei-ciL">
                         <barButtonItem key="rightBarButtonItem" title="Add Products" id="7es-8S-xAZ">
                             <connections>
                                 <segue destination="s48-oT-SEy" kind="show" id="pYr-fL-Jdt"/>
@@ -173,7 +175,7 @@
             </objects>
             <point key="canvasLocation" x="1791.6030534351144" y="10.563380281690142"/>
         </scene>
-        <!--Add Product View Controller-->
+        <!--Add Products-->
         <scene sceneID="KDe-Vt-zix">
             <objects>
                 <viewController id="s48-oT-SEy" customClass="AddProductViewController" customModule="A2_iOS_Ryan_101460443_1" customModuleProvider="target" sceneMemberID="viewController">
@@ -258,9 +260,9 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="s5J-B0-apS"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.7607843876" green="0.84705877299999999" blue="0.99215686319999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </view>
-                    <navigationItem key="navigationItem" id="gZM-9P-roW"/>
+                    <navigationItem key="navigationItem" title="Add Products" id="gZM-9P-roW"/>
                     <connections>
                         <outlet property="saveProduct" destination="23G-yq-Jn3" id="2ot-bg-s7m"/>
                         <outletCollection property="textFields" destination="3mr-k6-Qk7" collectionClass="NSMutableArray" id="zAs-Ji-Xt9"/>
