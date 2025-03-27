@@ -8,7 +8,7 @@
 import UIKit
 import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchBarDelegate{
 
     @IBOutlet weak var searchBar: UISearchBar!
     //labels to display the first product
@@ -30,6 +30,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        // Configure search bar
+        searchBar.delegate = self
         
         //load product data
         loadProducts()
@@ -69,7 +72,21 @@ class ViewController: UIViewController {
         providerLabel.text = "Provider: \(firstProduct.provider ?? "N/A")"
     }
     
-    
+    // UISearchBarDelegate method for search functionality
+        func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+            if searchText.isEmpty {
+                filteredProducts = products
+            } else {
+                filteredProducts = products?.filter { product in
+                    let nameMatch = product.name?.lowercased().contains(searchText.lowercased()) ?? false
+                    let descriptionMatch = product.desc?.lowercased().contains(searchText.lowercased()) ?? false
+                    return nameMatch || descriptionMatch
+                }
+            }
+            
+            // Display the first filtered product
+            displayFirstProduct()
+        }
 
 }
 
