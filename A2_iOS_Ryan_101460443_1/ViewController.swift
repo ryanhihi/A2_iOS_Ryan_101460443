@@ -68,11 +68,11 @@ class ViewController: UIViewController, UISearchBarDelegate{
         }
 
         // Update the labels with the first product's details
-        productIdLabel.text = product.productID?.uuidString ?? "N/A"
-        productNameLabel.text = product.name ?? "N/A"
-        descriptionLabel.text = product.desc ?? "N/A"
-        priceLabel.text = String(format: "$%.2f", product.price)
-        providerLabel.text = product.provider ?? "N/A"
+        productIdLabel.text = "Product ID: \(product.productID?.uuidString ?? "N/A")"
+            productNameLabel.text = "Name: \(product.name ?? "N/A")"
+            descriptionLabel.text = "Description: \(product.desc ?? "N/A")"
+            priceLabel.text = "Price: \(String(format: "$%.2f", product.price))"
+            providerLabel.text = "Provider: \(product.provider ?? "N/A")"
     }
     
     
