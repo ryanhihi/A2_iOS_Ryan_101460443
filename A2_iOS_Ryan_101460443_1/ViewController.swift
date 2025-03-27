@@ -30,10 +30,23 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        //load product data
+        loadProducts()
     }
 
     //function to load data
-    
+    func loadProducts() {
+        
+        let fetchRequest: NSFetchRequest<Product> = Product.fetchRequest()
+        do {
+            products = try context.fetch(fetchRequest)
+            filteredProducts = products
+            
+        } catch {
+            print("error fetching data: \(error.localizedDescription)" )
+        }
+    }
 
 }
 
