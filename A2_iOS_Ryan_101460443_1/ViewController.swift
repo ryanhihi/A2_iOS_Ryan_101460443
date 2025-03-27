@@ -87,6 +87,16 @@ class ViewController: UIViewController, UISearchBarDelegate{
             // Display the first filtered product
             displayFirstProduct()
         }
+    
+    //Prepare for the next screen
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShowProductListSegue" {
+            if let productListVC = segue.destination as? ProductListTableViewController {
+                productListVC.products = self.products
+            }
+        }
+    }
+
 
 }
 
