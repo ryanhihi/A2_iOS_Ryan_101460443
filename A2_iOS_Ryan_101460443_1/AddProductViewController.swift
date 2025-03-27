@@ -63,6 +63,13 @@ class AddProductViewController: UIViewController {
                 }
     }
     
+    private func clearFields() {
+        textFields[0].text = ""
+        textFields[1].text = ""
+        textFields[2].text = ""
+        textFields[3].text = ""
+        }
+    
     
     
 }
